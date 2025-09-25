@@ -1,0 +1,39 @@
+﻿namespace KT3._2
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            var book1 = new Book<string>("A123", "451 градус по Фаренгейту", "Рэй Брэдбери", 256);
+            var book2 = new Book<string>("B456", "Сто лет одиночества", "Габриэль Гарсиа Маркес", 416);
+            var book3 = new Book<int>(101, "Анна Каренина", "Лев Толстой", 864);
+            var book4 = new Book<int>(102, "Пролетая над гнездом кукушки", "Кен Кизи", 320);
+            var book5 = new Book<Guid>(Guid.NewGuid(), "Дюна", "Фрэнк Герберт", 635);
+            var book6 = new Book<Guid>(Guid.NewGuid(), "Игра престолов", "Джордж Мартин", 835);
+            Console.WriteLine(book1);
+            Console.WriteLine(book2);
+            Console.WriteLine(book3);
+            Console.WriteLine(book4);
+            Console.WriteLine(book5);
+            Console.WriteLine(book6);
+        }
+    }
+    class Book<T>
+    {
+        public string Name { get; set; }
+        public int PagesCount { get; set; }
+        public string Author { get; set; }
+        public T Id { get; set; }
+        public Book(T id, string name, string author, int pagesCount)
+        {
+            Id = id;
+            Name = name;
+            Author = author;
+            PagesCount = pagesCount;
+        }
+        public override string ToString()
+        {
+            return $"{Id} {Name}, {Author}, {PagesCount} страниц";
+        }
+    }
+}
