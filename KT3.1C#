@@ -1,0 +1,47 @@
+﻿namespace KT3._1
+{
+    internal class Program
+    {  
+        static void Main(string[] args)
+        {
+            Console.WriteLine(Sum(RandomNubmers(5)));
+        }
+        static object[] RandomNubmers(int countNumber)
+        {
+            object[] numbers = new object[countNumber];
+            for (int i = 0; i < countNumber; i++)
+            {
+                Random rnd = new Random();
+                int rndDoubleOrInt = rnd.Next(0, 2);
+                if(rndDoubleOrInt == 0)
+                {
+                    double rndDouble = 1.0 + (rnd.NextDouble() * 99.0);
+                    numbers[i] = rndDouble;
+                }
+                else
+                {
+                    int rndInt = rnd.Next(0, 100);
+                    numbers[i] = rndInt;
+                }
+                Console.WriteLine(numbers[i]);
+            }
+            return numbers;
+        }
+        static double Sum(object[] numbers)
+        {
+            double sum = 0;
+            for (int i = 0;i < numbers.Length;i++)
+            {
+                if (numbers[i] is int t)
+                {
+                    sum += t;
+                }
+                if (numbers[i] is double d)
+                {
+                    sum += d;
+                }
+            }
+            return sum;
+        }
+    }
+}
